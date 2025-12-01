@@ -1,0 +1,213 @@
+/* Home.css - Tiffit Style Clone */
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;800&display=swap');
+
+body {
+    font-family: 'Mulish', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Navbar */
+/* --- 1. Navbar (Yummy Tiffins Style) --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 80px;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* लोगो डिझाइन */
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.logo-text {
+    font-size: 28px;
+    font-weight: 800;
+    color: #ef790b; /* Yummy Green Color */
+    font-family: 'cursive'; /* स्टायलिश फॉन्ट */
+    line-height: 1;
+}
+
+.logo-sub {
+    font-size: 10px;
+    color: #555;
+    letter-spacing: 2px;
+}
+
+/* मेनू लिंक्स आणि मॅजिक लाईन */
+.nav-center {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-link {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+    position: relative; /* हे महत्वाचे आहे */
+    padding-bottom: 5px;
+    transition: color 0.3s;
+}
+
+/* मॅजिक लाईन (Green Line Animation) */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0; /* सुरुवातीला लाईन दिसणार नाही */
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background-color: #ef790b; /* हिरवा रंग */
+    transition: width 0.3s ease-in-out; /* ॲनिमेशन स्पीड */
+}
+
+/* माऊस नेल्यावर (Hover) लाईन मोठी होईल */
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link:hover {
+    color: #ef790b;
+}
+
+/* Sign In Button */
+.btn-signin {
+    border: 2px solid #ef790b;
+    background: transparent;
+    color: #ef790b;
+    padding: 8px 25px;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-signin:hover {
+    background: #ef790b;
+    color: white;
+}
+
+/* Hero Section */
+.hero-section-tiffit {
+    display: flex;
+    padding: 50px 100px;
+    align-items: center;
+    background: #fff;
+}
+.hero-content { flex: 1; }
+.hero-content h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; color: #222; }
+.hero-content p { font-size: 1.2rem; color: #666; margin-bottom: 30px; }
+.hero-image { flex: 1; text-align: right; }
+.hero-image img { width: 90%; border-radius: 20px; }
+
+/* Search Bar */
+.search-bar-tiffit {
+    display: flex;
+    background: white;
+    border: 1px solid #ddd;
+    padding: 5px;
+    border-radius: 10px;
+    width: 80%;
+    margin-bottom: 30px;
+}
+.search-bar-tiffit input { border: none; outline: none; flex: 1; padding: 15px; font-size: 16px; }
+.search-bar-tiffit button { background: #ff5500; color: white; border: none; padding: 15px 30px; border-radius: 8px; font-weight: 600; cursor: pointer; }
+
+/* Stats */
+.stats-row { display: flex; gap: 40px; }
+.stat h3 { margin: 0; font-size: 28px; color: #333; }
+.stat p { margin: 0; color: #888; }
+
+/* Steps Section */
+/* --- Steps Section (New Square Boxes with Shadow) --- */
+.steps-section {
+    padding: 60px 100px;
+    text-align: center;
+    background: #ffffff;
+}
+
+.steps-grid {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    gap: 20px; /* बॉक्समध्ये अंतर */
+}
+
+.step-card {
+    width: 22%;
+    padding: 30px 20px;
+    background: white; /* पांढरा बॅकग्राउंड */
+    border: 1px solid #e0e0e0; /* हलकी बॉर्डर */
+    border-radius: 10px; /* कोपरे थोडे गोल (Square look) */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08); /* ही सावली (Shadow) */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+/* माऊस नेल्यावर बॉक्स थोडा वर येईल */
+.step-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    border-color: #ff5500; /* बॉर्डर केशरी होईल */
+}
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    background: #fff0e6;
+    color: #ff5500;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.step-card h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+.step-card p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* Tiffit Style Cards */
+.card-grid { display: flex; gap: 30px; flex-wrap: wrap; justify-content: center; margin-top: 30px; }
+.tiffit-card { width: 300px; background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.05); cursor: pointer; transition: transform 0.3s; border: 1px solid #eee; }
+.tiffit-card:hover { transform: translateY(-5px); }
+.tiffit-img-box { height: 200px; position: relative; }
+.tiffit-img-box img { width: 100%; height: 100%; object-fit: cover; }
+.veg-badge { position: absolute; top: 10px; left: 10px; background: white; color: green; padding: 5px 10px; border-radius: 20px; font-size: 12px; font-weight: bold; }
+.tiffit-info { padding: 20px; }
+.tiffit-info h3 { margin: 0; font-size: 18px; }
+.chef-name { color: #888; font-size: 14px; margin-top: 5px; }
+.rating { background: #24963f; color: white; padding: 2px 6px; border-radius: 4px; font-size: 12px; }
+.price { font-size: 18px; font-weight: 800; color: #333; }
+.view-btn { background: #fdfdfd; border: 1px solid #ff5500; color: #ff5500; padding: 5px 15px; border-radius: 5px; cursor: pointer; }
+.view-btn:hover { background: #ff5500; color: white; }
+
+/* App Banner */
+.app-banner { display: flex; background: #fff0e6; padding: 60px 100px; align-items: center; margin-top: 50px; }
+.app-text { flex: 1; }
+.store-buttons button { background: black; color: white; border: none; padding: 10px 20px; border-radius: 5px; margin-right: 10px; cursor: pointer; font-size: 16px; }
+.app-img { flex: 1; text-align: center; }
+
+/* Footer */
+.footer { background: #111; color: white; padding: 40px; text-align: center; }
