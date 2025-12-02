@@ -20,10 +20,11 @@ function Login() {
   };
 
   // --- ACTION: बटण दाबल्यावर काय करायचे? ---
+ // --- ACTION: बटण दाबल्यावर काय करायचे? ---
   const handleSubmit = async () => {
     const { name, mobile, password, role } = formData;
 
-    // 1. SIGN UP LOGIC
+    // --- 1. SIGN UP LOGIC ---
     if (activeTab === 'signup') {
         if (!name || !mobile || !password) {
             alert("Please fill all details!"); return;
@@ -36,16 +37,18 @@ function Login() {
                 body: JSON.stringify(formData)
             });
             const data = await res.json();
+
             if(data.status === "success") {
-                alert("Account Created! Please Login now.");
-                setActiveTab('login'); // आपोआप लॉगिन टॅबवर जा
+                alert("Registration Successful! Please Login.");
+                // बदला: आता आपण त्याला Login टॅबवर पाठवत आहोत
+                setActiveTab('login'); 
             } else {
                 alert(data.message);
             }
         } catch(err) { console.error(err); alert("Server Error"); }
     } 
     
-    // 2. LOGIN LOGIC
+    // --- 2. LOGIN LOGIC ---
     else {
         if (!mobile || !password) {
             alert("Enter Mobile and Password!"); return;
@@ -66,6 +69,7 @@ function Login() {
                 
                 alert("Login Successful! Welcome " + data.name);
                 
+                // बदला: लॉगिन झाल्यावर डॅशबोर्डवर पाठवणे
                 if(data.role === 'mess_partner') navigate('/owner-dashboard');
                 else navigate('/dashboard');
             } else {

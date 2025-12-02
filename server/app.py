@@ -1,3 +1,5 @@
+import os # फोटो सेव्ह करण्यासाठी
+from werkzeug.utils import secure_filename # फाईलच्या नावासाठी
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from pymongo import MongoClient
@@ -5,6 +7,10 @@ from flask_bcrypt import Bcrypt # पासवर्डसाठी
 from datetime import datetime
 
 app = Flask(__name__)
+# फोटो सेव्ह करण्यासाठी फोल्डर (Client च्या public फोल्डरमध्ये टाकू म्हणजे दिसेल)
+UPLOAD_FOLDER = '../client/public/uploads'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+os.makedirs(UPLOAD_FOLDER, exist_ok=True) # फोल्डर नसेल तर बनव
 CORS(app)
 bcrypt = Bcrypt(app) # Bcrypt चालू केले
 
@@ -122,6 +128,43 @@ def update_user_profile():
         {"$set": {"name": name, "email": email}}
     )
     return jsonify({"status": "success", "message": "Updated"})
+# --- 1. Owner Stats API (कमाई आणि ऑर्डर्स दाखवण्यासाठी) ---
+@app.route('/api/owner/stats', methods=['GET'])
+def get_owner_stats():
+    # सध्या आपण डमी डेटा पाठवू (नंतर हे डेटाबेस मधून येईल)
+    stats = {
+        "earnings": 45000,
+        "subscribers": 120,
+        "guest_orders": 35,
+        "total_orders": 155
+    }
+    return jsonify({"status": "success", "data": stats})
+
+# --- 2. Menu Update API (फोटो आणि माहिती सेव्ह करण्यासाठी) ---
+@app.route('/api/owner/update_menu', methods=['POST'])
+def update_menu():
+    try:
+        mess_name = request.form.get('mess_name')
+        description = request.form.get('description')
+        price = request.form.get('price')
+        meal_type = request.form.get('meal_type') # Lunch or Dinner
+        
+        # फोटो आला आहे का?
+        image_filename = ""
+        if 'image' in request.files:
+            file = request.files['image']
+            if file.filename != '':
+                filename = secure_filename(file.filename)
+                file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+                image_filename = f"/uploads/{filename}" # हा पाथ आपण सेव्ह करू
+
+        # इथे तुम्ही डेटाबेस मध्ये सेव्ह करू शकता (सध्या आपण प्रिंट करू)
+        print(f"🍱 Menu Updated: {meal_type} | Price: {price} | Img: {image_filename}")
+
+        return jsonify({"status": "success", "message": f"{meal_type} Menu Updated Successfully!"})
+    except Exception as e:
+        print(e)
+        return jsonify({"status": "error", "message": "Upload Failed"})
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)

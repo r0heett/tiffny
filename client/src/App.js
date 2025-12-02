@@ -1,18 +1,31 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+// Pages Import
 import Home from './pages/Home';
 import Login from './pages/Login';
-import Dashboard from './pages/Dashboard'; // हे नवीन ॲड केले
+import Dashboard from './pages/Dashboard';
+import MessDetails from './pages/MessDetails';
+import OwnerDashboard from './pages/OwnerDashboard'; // <-- हे महत्वाचे आहे
 
 function App() {
   return (
     <Router>
       <Routes>
+        {/* Home Page */}
         <Route path="/" element={<Home />} />
+        
+        {/* Login & Sign Up (दोन्ही एकाच पेजवर आहेत) */}
         <Route path="/login" element={<Login />} />
         
-        {/* हा डॅशबोर्डचा नवीन रस्ता */}
+        {/* Student Dashboard */}
         <Route path="/dashboard" element={<Dashboard />} />
+        
+        {/* Owner Dashboard (मेस मालकांसाठी) */}
+        <Route path="/owner-dashboard" element={<OwnerDashboard />} />
+        
+        {/* Mess Details Page */}
+        <Route path="/mess/:id" element={<MessDetails />} />
       </Routes>
     </Router>
   );
