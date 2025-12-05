@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Home.css';
 
 function Home() {
   const navigate = useNavigate();
+  const [searchInput, setSearchInput] = useState(""); // 1. हे नवीन स्टेट आहे
+
+  // 2. सर्च बटण दाबल्यावर काय करायचे?
+  const handleSearch = () => {
+    navigate('/menu', { state: { search: searchInput } }); // हे सर्च शब्द Menu Page ला पाठवेल
+  };
 
   return (
     <div>
@@ -14,45 +20,54 @@ function Home() {
             <span className="logo-sub">your meal, your style</span>
         </div>
         <div className="nav-center">
-            <span className="nav-link" style={{color: "#4aa02c"}}>Home</span>
-            <span className="nav-link" onClick={() => navigate('/menu')}>Menu</span> {/* Link Added */}
-            <span className="nav-link">About Us</span>
-            <span className="nav-link">Concept</span>
-            <span className="nav-link">Contact Us</span>
+            <span className="nav-link active-link" onClick={() => navigate('/')}>Home</span>
+            <span className="nav-link" onClick={() => navigate('/menu')}>Menu</span>
+            <span className="nav-link" onClick={() => navigate('/about')}>About Us</span>
+            <span className="nav-link" onClick={() => navigate('/about')}>Concept</span>
             <span className="nav-link" style={{color: "#ff5500", fontWeight: "bold"}} onClick={() => navigate('/partner-signup')}>Partner with Us</span>
-            
+            <span className="nav-link">Contact Us</span>
         </div>
         <div className="nav-right">
             <button className="btn-signin" onClick={() => navigate('/login')}>Sign In</button>
         </div>
       </div>
 
-      {/* 2. Hero Section */}
+      {/* 2. Hero Section (Video) */}
       <div className="hero-section-tiffit">
-        <div className="hero-content">
-            <h1>Order <span style={{color: "#4aa02c"}}>Homemade</span> Food <br/> That You Will Love ❤️</h1>
-            <p>Healthy, Hygienic & Delicious tiffins delivered to your doorstep in Nashik.</p>
+        <video autoPlay loop muted playsInline className="video-bg">
+            <source src="/food.mp4" type="video/mp4" />
+        </video>
+        <div className="hero-overlay"></div>
+        <div className="hero-content animate-up" style={{textAlign: "center", width: "100%"}}>
+            <h1 style={{color: "white", textShadow: "0 5px 15px rgba(0,0,0,0.5)"}}>
+                Ghar ka Khana, <br/> Delivered with <span style={{color: "#ff9900"}}>Love ❤️</span>
+            </h1>
+            <p style={{color: "#f0f0f0", fontSize: "1.5rem", fontWeight: "300"}}>
+                Fresh, Hygienic & Affordable Tiffins in Nashik.
+            </p>
             
-            <div className="search-bar-tiffit">
-                <input type="text" placeholder="Enter your delivery location..." />
-                <button onClick={() => navigate('/menu')}>Find Food</button>
+            {/* 3. सर्च बार (बदललेला) */}
+            <div className="search-bar-tiffit" style={{margin: "40px auto"}}>
+                <input 
+                    type="text" 
+                    placeholder="Search for 'Veg Thali' or 'Puran Poli'..." 
+                    onChange={(e) => setSearchInput(e.target.value)} // टाईप केलेले अक्षर पकडणे
+                />
+                <button onClick={handleSearch}>Find Food</button> {/* क्लिक केल्यावर Menu कडे जाणे */}
             </div>
-            
-            <div className="stats-row">
-                <div className="stat"><h3>10k+</h3><p>Happy Users</p></div>
-                <div className="stat"><h3>500+</h3><p>Home Chefs</p></div>
-                <div className="stat"><h3>1M+</h3><p>Meals Served</p></div>
+
+            <div className="stats-row" style={{justifyContent: "center", color: "white"}}>
+                <div className="stat"><h3 style={{color: "white"}}>10k+</h3><p style={{color: "#ddd"}}>Users</p></div>
+                <div className="stat"><h3 style={{color: "white"}}>500+</h3><p style={{color: "#ddd"}}>Chefs</p></div>
+                <div className="stat"><h3 style={{color: "white"}}>1M+</h3><p style={{color: "#ddd"}}>Meals</p></div>
             </div>
-        </div>
-        <div className="hero-image">
-            <img src="https://5.imimg.com/data5/VB/HH/MY-40639660/best-tiffin-service-in-pune-at-just-rs-60.jpg" alt="Tiffin Service" style={{ width: "90%", borderRadius: "20px", boxShadow: "0 10px 30px rgba(0,0,0,0.2)" }} />
         </div>
       </div>
 
-      {/* 3. How It Works */}
+      {/* 3. Steps Section */}
       <div className="steps-section">
         <h2 className="section-title">How It Works?</h2>
-        <div className="steps-grid">
+        <div className="steps-grid animate-up">
             <div className="step-card"><div className="step-number">1</div><h3>Select Location</h3><p>Enter your area to find nearby home chefs.</p></div>
             <div className="step-card"><div className="step-number">2</div><h3>Choose Meal</h3><p>Browse menus and select your favorite thali.</p></div>
             <div className="step-card"><div className="step-number">3</div><h3>Place Order</h3><p>Pay online or COD and confirm your tiffin.</p></div>
@@ -60,22 +75,7 @@ function Home() {
         </div>
       </div>
 
-      {/* 4. App Banner */}
-      <div className="app-banner">
-        <div className="app-text">
-            <h2>Get the Tiffny Experience on Mobile</h2>
-            <p>Download our app for live tracking and faster ordering.</p>
-            <div className="store-buttons">
-                <button>Google Play</button>
-                <button>App Store</button>
-            </div>
-        </div>
-        <div className="app-img">
-            <img src="https://cdn-icons-png.flaticon.com/512/300/300231.png" alt="Mobile App" style={{width: "200px"}}/>
-        </div>
-      </div>
-
-      {/* 5. Footer */}
+      {/* Footer */}
       <div className="footer">
         <h3>Tiffny - Nashik</h3>
         <p>© 2025 All rights reserved.</p>
