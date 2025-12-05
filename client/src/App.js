@@ -7,6 +7,8 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import MessDetails from './pages/MessDetails';
 import OwnerDashboard from './pages/OwnerDashboard'; // <-- हे महत्वाचे आहे
+import Menu from './pages/Menu'; // <-- Import
+import Partner from './pages/Partner'; // <-- Import
 
 function App() {
   return (
@@ -26,6 +28,12 @@ function App() {
         
         {/* Mess Details Page */}
         <Route path="/mess/:id" element={<MessDetails />} />
+
+        {/* Menu path Page */}
+        <Route path="/menu" element={<Menu />} />
+        {/* partner us  Page */}
+        <Route path="/partner-signup" element={<Partner />} />
+
       </Routes>
     </Router>
   );

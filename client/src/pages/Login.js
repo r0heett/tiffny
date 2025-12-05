@@ -3,24 +3,22 @@ import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
 function Login() {
-  const [activeTab, setActiveTab] = useState('login'); // 'login' किंवा 'signup'
-  const [showPassword, setShowPassword] = useState(false); // पासवर्ड दिसण्यासाठी स्टेट
+  const [activeTab, setActiveTab] = useState('login'); 
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
-  // फॉर्मचा डेटा
+  // फॉर्म डेटा (डीफॉल्ट रोल 'user' ठेवला आहे)
   const [formData, setFormData] = useState({
     name: '',
     mobile: '',
     password: '',
-    role: 'user' // डीफॉल्ट 'User'
+    role: 'user' // फिक्स केले (फक्त User)
   });
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // --- ACTION: बटण दाबल्यावर काय करायचे? ---
- // --- ACTION: बटण दाबल्यावर काय करायचे? ---
   const handleSubmit = async () => {
     const { name, mobile, password, role } = formData;
 
@@ -39,8 +37,7 @@ function Login() {
             const data = await res.json();
 
             if(data.status === "success") {
-                alert("Registration Successful! Please Login.");
-                // बदला: आता आपण त्याला Login टॅबवर पाठवत आहोत
+                alert("Account Created! Please Login.");
                 setActiveTab('login'); 
             } else {
                 alert(data.message);
@@ -69,9 +66,8 @@ function Login() {
                 
                 alert("Login Successful! Welcome " + data.name);
                 
-                // बदला: लॉगिन झाल्यावर डॅशबोर्डवर पाठवणे
-                if(data.role === 'mess_partner') navigate('/owner-dashboard');
-                else navigate('/dashboard');
+                // बदला: आता थेट होम पेजवर पाठवले (Home Page)
+                navigate('/'); 
             } else {
                 alert(data.message);
             }
@@ -86,20 +82,12 @@ function Login() {
       <div className="auth-box">
         <h1 className="brand-title">Tiffny</h1>
 
-        {/* --- TABS --- */}
         <div className="auth-tabs">
-            <div className={`tab ${activeTab === 'login' ? 'active' : ''}`} onClick={() => setActiveTab('login')}>
-                Login
-            </div>
-            <div className={`tab ${activeTab === 'signup' ? 'active' : ''}`} onClick={() => setActiveTab('signup')}>
-                Sign Up
-            </div>
+            <div className={`tab ${activeTab === 'login' ? 'active' : ''}`} onClick={() => setActiveTab('login')}>Login</div>
+            <div className={`tab ${activeTab === 'signup' ? 'active' : ''}`} onClick={() => setActiveTab('signup')}>Sign Up</div>
         </div>
 
-        {/* --- FORM FIELDS --- */}
         <div className="auth-form">
-            
-            {/* फक्त Sign Up ला नाव विचारा */}
             {activeTab === 'signup' && (
                 <div className="input-group">
                     <label className="input-label">Full Name</label>
@@ -112,7 +100,6 @@ function Login() {
                 <input type="text" name="mobile" className="auth-input" placeholder="Enter 10-digit number" onChange={handleChange} />
             </div>
 
-            {/* --- PASSWORD FIELD WITH EYE ICON --- */}
             <div className="input-group">
                 <label className="input-label">Password</label>
                 <div className="password-wrapper">
@@ -123,40 +110,20 @@ function Login() {
                         placeholder="Enter password" 
                         onChange={handleChange} 
                     />
-                    <span 
-                        className="eye-icon"
-                        onClick={() => setShowPassword(!showPassword)}
-                        title={showPassword ? "Hide Password" : "Show Password"}
-                    >
+                    <span className="eye-icon" onClick={() => setShowPassword(!showPassword)}>
                         {showPassword ? "🙈" : "👁️"} 
                     </span>
                 </div>
             </div>
 
-            {/* फक्त Sign Up ला रोल विचारा */}
-            {activeTab === 'signup' && (
-                <div className="input-group">
-                    <label className="input-label">I am a...</label>
-                    <div className="role-group">
-                        <label className="role-option">
-                            <input type="radio" name="role" value="user" checked={formData.role === 'user'} onChange={handleChange} />
-                            User
-                        </label>
-                        <label className="role-option">
-                            <input type="radio" name="role" value="mess_partner" checked={formData.role === 'mess_partner'} onChange={handleChange} />
-                            Mess Partner
-                        </label>
-                    </div>
-                </div>
-            )}
+            {/* रोल सिलेक्शन काढून टाकले आहे */}
 
-            {/* Login / Sign Up Button */}
             <button className="auth-btn" onClick={handleSubmit}>
                 {activeTab === 'login' ? 'Login' : 'Create Account'}
             </button>
 
             <p className="footer-text">
-                By continuing, you agree to Tiffny's <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
+                Welcome to Tiffny - Nashik's Best Food Network! 🍇
             </p>
         </div>
       </div>
