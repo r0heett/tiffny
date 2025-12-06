@@ -1,165 +1,202 @@
-/* Login.css - Complete Design with Eye Icon */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+/* Home.css - Long & Rich Design */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
-.auth-container {
-    /* 1. इमेजची लिंक */
-    background-image: url('https://images.unsplash.com/photo-1543353071-87d8796472d1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
-    
-    /* 2. हे दोन महत्वाचे आहेत */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    
-    /* 3. पूर्ण स्क्रीन */
-    height: 100vh;
-    width: 100%;
-    
-    /* 4. बाकीचे */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+body { font-family: 'Poppins', sans-serif; margin: 0; padding: 0; color: #333; background-color: #fff; }
+
+/* Navbar */
+.navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 60px; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+.logo { font-size: 26px; font-weight: 800; color: #ff5500; cursor: pointer; }
+.nav-center { display: flex; gap: 30px; }
+.nav-link { font-size: 15px; font-weight: 500; color: #555; cursor: pointer; transition: color 0.3s; }
+.nav-link:hover { color: #ff5500; }
+.btn-partner { padding: 8px 20px; border: 1px solid #ff5500; color: #ff5500; background: transparent; border-radius: 5px; font-weight: 600; cursor: pointer; transition: all 0.3s; }
+.btn-partner:hover { background: #ff5500; color: white; }
+.link-signin { font-size: 15px; font-weight: 600; color: #333; cursor: pointer; margin-left: 20px; }
+
+/* Hero Section */
+.hero-section-tiffit { position: relative; height: 90vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white; overflow: hidden; }
+.video-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+.hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); z-index: 1; }
+.hero-content { position: relative; z-index: 2; max-width: 900px; padding: 20px; animation: fadeInUp 1s ease; }
+.hero-content h1 { font-size: 3.5rem; font-weight: 700; margin-bottom: 20px; line-height: 1.2; }
+.hero-content p { font-size: 1.3rem; margin-bottom: 40px; opacity: 0.9; }
+.cta-btn { padding: 18px 50px; background-color: #ff5500; color: white; font-size: 18px; font-weight: 700; border: none; border-radius: 50px; cursor: pointer; box-shadow: 0 10px 30px rgba(255, 85, 0, 0.4); transition: transform 0.3s; }
+.cta-btn:hover { transform: translateY(-5px); background-color: #e04b00; }
+.partner-link-small { margin-top: 20px; font-size: 14px; color: #ddd; cursor: pointer; text-decoration: underline; }
+
+/* General Sections */
+.section-white { padding: 80px 100px; background: white; text-align: center; }
+.section-grey { padding: 80px 100px; background: #f9f9f9; text-align: center; }
+.section-heading { font-size: 32px; font-weight: 700; margin-bottom: 50px; color: #222; }
+
+/* Steps Grid */
+.steps-grid { display: flex; justify-content: space-around; gap: 40px; }
+.step-item { flex: 1; padding: 20px; }
+.step-icon { font-size: 40px; margin-bottom: 20px; display: block; }
+.step-item h3 { font-size: 20px; margin-bottom: 10px; color: #333; }
+.step-item p { color: #666; font-size: 15px; line-height: 1.6; }
+
+/* Plans Grid */
+.plans-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
+.plan-card { width: 300px; background: white; padding: 30px; border-radius: 15px; border: 1px solid #eee; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: transform 0.3s; position: relative; }
+.plan-card:hover { transform: translateY(-10px); }
+.highlight-plan { border: 2px solid #ff5500; transform: scale(1.05); }
+.badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #ff5500; color: white; padding: 5px 15px; font-size: 12px; border-radius: 20px; font-weight: bold; }
+.plan-price { font-size: 24px; font-weight: 800; color: #333; margin: 10px 0; }
+.plan-desc { color: #666; font-size: 14px; line-height: 1.6; margin-bottom: 20px; min-height: 60px; }
+.plan-btn { padding: 10px 25px; border: 1px solid #ff5500; color: #ff5500; background: white; border-radius: 50px; cursor: pointer; font-weight: 600; }
+.btn-fill { background: #ff5500; color: white; }
+
+/* Why Choose Us */
+.features-row { display: flex; justify-content: space-around; text-align: left; gap: 30px; }
+.feature-block { background: #fdfdfd; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); flex: 1; }
+.feat-icon { font-size: 30px; margin-bottom: 15px; display: block; }
+.feature-block h4 { font-size: 20px; margin-bottom: 10px; }
+
+/* Partner Block */
+.partner-block-large { padding: 80px 100px; background: #111; color: white; display: flex; align-items: center; justify-content: space-between; }
+.partner-content-left { flex: 1; max-width: 600px; }
+.partner-content-left h2 { font-size: 36px; margin-bottom: 20px; }
+.partner-list { list-style: none; padding: 0; margin-bottom: 30px; }
+.partner-list li { margin-bottom: 10px; font-size: 16px; opacity: 0.9; }
+.btn-register-large { padding: 15px 40px; background: #ff5500; color: white; border: none; border-radius: 8px; font-size: 18px; font-weight: bold; cursor: pointer; }
+.partner-image-right img { width: 300px; opacity: 0.8; }
+
+/* Testimonials */
+.reviews-grid { display: flex; gap: 30px; justify-content: center; margin-bottom: 60px; }
+.review-card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); width: 300px; text-align: left; }
+.stars { color: #ffd700; font-size: 20px; margin-bottom: 10px; }
+.review-card p { color: #555; font-style: italic; margin-bottom: 15px; }
+.review-card span { font-weight: 700; color: #333; font-size: 14px; }
+
+.big-stats-row { display: flex; justify-content: center; gap: 80px; }
+.big-stat h3 { font-size: 40px; font-weight: 800; color: #ff5500; margin: 0; }
+.big-stat p { font-size: 16px; color: #666; font-weight: 600; text-transform: uppercase; }
+
+/* FAQ */
+.faq-container { max-width: 800px; margin: 0 auto; text-align: left; }
+.faq-item { background: #f9f9f9; margin-bottom: 15px; border-radius: 8px; overflow: hidden; border: 1px solid #eee; }
+.faq-question { padding: 20px; font-weight: 600; color: #333; cursor: pointer; display: flex; justify-content: space-between; }
+.faq-answer { padding: 0 20px 20px; color: #666; line-height: 1.6; animation: fadeIn 0.3s; }
+
+/* Footer */
+.footer-large { background: #1a1a1a; color: #ddd; padding: 60px 100px 20px; }
+.footer-cols { display: flex; justify-content: space-between; margin-bottom: 40px; }
+.f-col h3 { color: white; font-size: 24px; margin-bottom: 20px; }
+.f-col h4 { color: white; margin-bottom: 20px; }
+.f-col span { display: block; margin-bottom: 10px; cursor: pointer; transition: color 0.2s; font-size: 14px; }
+.f-col span:hover { color: #ff5500; }
+.footer-line { border: 0; border-top: 1px solid #333; margin-bottom: 20px; }
+.copyright { text-align: center; font-size: 13px; color: #777; }
+
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+/* --- Popular Plans Carousel --- */
+.carousel-wrapper {
     position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
 }
 
-/* काळी शेड (Overlay) */
-.auth-overlay {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0, 0, 0, 0.6);
+.plan-carousel {
+    display: flex;
+    gap: 30px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 20px 10px;
+    /* स्क्रोलबार लपवण्यासाठी */
+    scrollbar-width: none; /* Firefox */
 }
+.plan-carousel::-webkit-scrollbar { display: none; /* Chrome */ }
 
-.auth-box {
+.plan-card-premium {
+    min-width: 300px;
     background: white;
-    width: 400px;
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-    position: relative;
-    z-index: 2;
-    text-align: center;
-}
-
-.brand-title {
-    color: #ff9900;
-    font-size: 32px;
-    font-weight: 700;
-    margin-bottom: 20px;
-}
-
-/* Tabs (Login | Sign Up) */
-.auth-tabs {
-    display: flex;
-    justify-content: space-around;
-    border-bottom: 2px solid #f0f0f0;
-    margin-bottom: 30px;
-}
-
-.tab {
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: 600;
-    color: #888;
-    cursor: pointer;
-    width: 50%;
-    text-align: center;
-    transition: all 0.3s;
-}
-
-.tab.active {
-    color: #ff9900;
-    border-bottom: 3px solid #ff9900;
-}
-
-/* फॉर्म फिल्ड्स */
-.input-group {
-    margin-bottom: 20px;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+    border: 1px solid #f0f0f0;
     text-align: left;
-}
-
-.input-label {
-    display: block;
-    font-size: 14px;
-    color: #555;
-    margin-bottom: 5px;
-    font-weight: 500;
-}
-
-.auth-input {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 14px;
-    box-sizing: border-box;
-}
-
-.auth-input:focus {
-    border-color: #ff9900;
-    outline: none;
-}
-
-/* --- Password Eye Icon --- */
-.password-wrapper {
     position: relative;
-    display: flex;
-    align-items: center;
 }
 
-.eye-icon {
+.plan-card-premium:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    border-color: #ffdab3;
+}
+
+.plan-tag {
     position: absolute;
+    top: 15px;
     right: 15px;
-    cursor: pointer;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+}
+.tag-green { background: #e6f7ed; color: #1a7e38; }
+.tag-red { background: #ffe6e6; color: #d63031; }
+.tag-orange { background: #fff0e6; color: #ff5500; }
+.tag-blue { background: #e6f2ff; color: #005a9e; }
+.tag-purple { background: #f3e6ff; color: #8e44ad; }
+
+.plan-card-premium h3 {
+    margin: 10px 0;
     font-size: 20px;
-    user-select: none;
-    background: transparent;
-    border: none;
+    color: #333;
 }
 
-/* Role Selection */
-.role-group {
-    display: flex;
-    gap: 20px;
-    margin-bottom: 20px;
+.price-box {
+    margin: 20px 0;
 }
 
-.role-option {
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-    cursor: pointer;
+.starting-at {
+    display: block;
+    font-size: 12px;
+    color: #888;
 }
 
-.role-option input {
-    margin-right: 8px;
-    accent-color: #ff9900;
+.plan-price {
+    font-size: 24px;
+    font-weight: 800;
+    color: #222;
 }
 
-/* Action Button */
-.auth-btn {
+.plan-btn-full {
     width: 100%;
     padding: 12px;
-    background-color: #ff9900;
+    background: #ff5500;
     color: white;
-    font-size: 16px;
-    font-weight: 700;
     border: none;
     border-radius: 8px;
+    font-weight: 600;
     cursor: pointer;
     transition: background 0.3s;
 }
-
-.auth-btn:hover {
-    background-color: #e68a00;
+.plan-btn-full:hover {
+    background: #e04b00;
 }
 
-.footer-text {
-    margin-top: 20px;
-    font-size: 12px;
-    color: #777;
-    line-height: 1.5;
+/* Scroll Buttons (Arrows) */
+.scroll-btn {
+    background: white;
+    border: 1px solid #ddd;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    z-index: 10;
+    transition: all 0.3s;
 }
-
-.footer-text a {
-    color: #ff9900;
-    text-decoration: none;
+.scroll-btn:hover {
+    background: #ff5500;
+    color: white;
+    border-color: #ff5500;
 }
+.left { margin-right: 15px; }
+.right { margin-left: 15px; }

@@ -1,158 +1,242 @@
-/* Partner.css - Correct Layout */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+/* Partner.css - Sleek Modern 7-Step Wizard */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-.partner-page {
+:root {
+    --primary: #FF6B35; /* Pastel Orange */
+    --secondary: #2E86AB; /* Soft Blue */
+    --success: #4aa02c;
+    --error: #ff4d4d;
+    --text-dark: #222;
+    --text-light: #666;
+    --bg-white: #ffffff;
+    --input-bg: #f9f9f9;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f7f6;
+    margin: 0;
+}
+
+/* --- Wizard Container --- */
+.wizard-container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 40px auto;
+    background: var(--bg-white);
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+    overflow: hidden;
+    min-height: 85vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Gradient Header Strip */
+.wizard-header-strip {
+    height: 8px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+
+/* --- Progress Bar --- */
+.progress-area {
+    padding: 30px 50px 10px;
+    background: #fff;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.progress-steps {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 15px;
+}
+
+/* Line behind dots */
+.progress-steps::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 0; width: 100%; height: 3px;
+    background: #e0e0e0;
+    z-index: 0;
+    transform: translateY(-50%);
+}
+
+/* Active Line */
+.progress-fill {
+    position: absolute;
+    top: 50%; left: 0; height: 3px;
+    background: var(--secondary);
+    z-index: 0;
+    transform: translateY(-50%);
+    transition: width 0.5s ease;
+}
+
+.step-dot {
+    width: 35px; height: 35px;
+    background: white;
+    border: 3px solid #e0e0e0;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: bold; color: #999;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.step-dot.active {
+    border-color: var(--primary);
+    background: var(--primary);
+    color: white;
+    transform: scale(1.2);
+    box-shadow: 0 0 15px rgba(255, 107, 53, 0.4);
+}
+
+.step-dot.completed {
+    border-color: var(--secondary);
+    background: var(--secondary);
+    color: white;
+}
+
+.step-labels {
+    text-align: center;
+    margin-top: 5px;
+    font-size: 14px;
+    color: var(--secondary);
+    font-weight: 600;
+}
+
+/* --- Content Area --- */
+.step-content {
+    flex: 1;
+    padding: 40px 60px;
+    animation: fadeSlideIn 0.5s ease-out;
+}
+
+@keyframes fadeSlideIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h2 { font-size: 32px; font-weight: 700; color: var(--text-dark); margin-bottom: 10px; }
+.sub-text { font-size: 16px; color: var(--text-light); margin-bottom: 40px; }
+
+/* --- Floating Labels (Modern Inputs) --- */
+.floating-group {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.floating-input {
+    width: 100%;
+    height: 56px;
+    padding: 20px 15px 5px;
+    border: 2px solid #eee;
+    border-radius: 12px;
+    font-size: 16px;
+    background: var(--input-bg);
+    outline: none;
+    transition: all 0.3s;
     font-family: 'Poppins', sans-serif;
 }
 
-/* --- 1. Hero Section (Full Height) --- */
-.partner-hero {
-    /* बॅकग्राउंड इमेज */
-    background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.7)), 
-                url('https://images.unsplash.com/photo-1606491956689-2ea28c674675?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
-    background-size: cover;
-    background-position: center;
-    
-    height: 70vh; /* पूर्ण स्क्रीन */
-    width: 100%;
-    
+.floating-input:focus {
+    border-color: var(--primary);
+    background: white;
+    box-shadow: 0 5px 20px rgba(255, 107, 53, 0.1);
+}
+
+/* Label Animation */
+.floating-label {
+    position: absolute;
+    top: 18px; left: 15px;
+    font-size: 16px;
+    color: #999;
+    pointer-events: none;
+    transition: all 0.2s ease;
+}
+
+.floating-input:focus ~ .floating-label,
+.floating-input:not(:placeholder-shown) ~ .floating-label {
+    top: 8px;
+    font-size: 12px;
+    color: var(--secondary);
+    font-weight: 600;
+}
+
+/* --- Buttons --- */
+.nav-footer {
+    padding: 20px 60px;
+    background: white;
+    border-top: 1px solid #f0f0f0;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    justify-content: space-between;
 }
 
-/* टायटल आणि बटन */
-.hero-content h1 {
-    font-size: 3.5rem;
-    font-weight: 800;
-    color: #333;
-    line-height: 1.2;
-    margin-bottom: 20px;
-}
-
-.highlight-green { color: #4aa02c; }
-
-.hero-content p {
-    font-size: 1.5rem;
-    color: #555;
-    margin-bottom: 40px;
-}
-
-.register-btn {
-    background-color: #4aa02c;
+.btn-primary {
+    background: var(--primary);
     color: white;
     padding: 15px 40px;
-    font-size: 18px;
+    font-size: 16px;
+    font-weight: 600;
     border: none;
     border-radius: 50px;
     cursor: pointer;
-    font-weight: bold;
-    transition: transform 0.3s;
+    box-shadow: 0 10px 20px rgba(255, 107, 53, 0.2);
+    transition: all 0.3s;
 }
 
-.register-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(74, 160, 44, 0.3);
-}
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(255, 107, 53, 0.3); }
+.btn-primary:disabled { background: #ddd; cursor: not-allowed; box-shadow: none; }
 
-/* --- 2. Get Started Section (Below Hero) --- */
-.get-started-section {
-    padding: 80px 20px;
-    background-color: #f8f8f8; /* वेगळा रंग */
-    display: flex;
-    justify-content: center;
-}
-
-.get-started-card {
-    background: white;
-    width: 100%;
-    max-width: 900px;
-    padding: 50px;
-    border-radius: 15px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-    border: 1px solid #eee;
-}
-
-.get-started-card h2 { font-size: 28px; color: #333; margin-bottom: 10px; }
-.get-started-card p { color: #666; margin-bottom: 40px; }
-
-.docs-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
-
-.doc-item {
+.btn-secondary {
+    background: #f0f4f8;
+    color: #555;
+    padding: 15px 30px;
     font-size: 16px;
-    color: #444;
-    display: flex;
-    align-items: center;
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s;
 }
+.btn-secondary:hover { background: #e0e6ed; }
 
-.check-icon {
-    color: #4aa02c;
-    font-size: 20px;
-    margin-right: 10px;
-    font-weight: bold;
-}
-/* --- Modal Popup Design --- */
-.modal-overlay {
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0,0,0,0.6); /* काळी पारदर्शक शेड */
+/* --- Special Sections --- */
+/* Hero Step */
+.hero-step-modern {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1556910103-1c02745a30bf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    z-index: 2000; /* सर्वांच्या वर */
-    backdrop-filter: blur(5px); /* ब्लर इफेक्ट */
-}
-
-.modal-box {
-    background: white;
-    padding: 40px;
-    width: 400px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    position: relative;
-    animation: zoomIn 0.3s ease;
-}
-
-.modal-input {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-sizing: border-box;
-    font-size: 14px;
-}
-
-.submit-btn {
-    width: 100%;
-    padding: 12px;
-    background-color: #4aa02c;
+    text-align: center;
     color: white;
-    font-weight: bold;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 10px;
 }
+.hero-step-modern h1 { font-size: 4rem; text-shadow: 0 10px 30px rgba(0,0,0,0.5); margin-bottom: 20px; }
+.hero-features { display: flex; gap: 30px; margin: 40px 0; }
+.feat-box { background: rgba(255,255,255,0.15); padding: 20px; border-radius: 15px; backdrop-filter: blur(10px); width: 180px; }
 
-.close-btn {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    background: none;
-    border: none;
-    font-size: 30px;
+/* Upload Area */
+.upload-zone {
+    border: 2px dashed #ccc;
+    border-radius: 15px;
+    padding: 40px;
+    text-align: center;
     cursor: pointer;
-    color: #888;
+    transition: all 0.3s;
+    background: #fafafa;
 }
+.upload-zone:hover { border-color: var(--primary); background: #fffbf9; }
 
-@keyframes zoomIn {
-    from { transform: scale(0.8); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-}
+/* OTP Modal */
+.otp-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.9); z-index: 2000; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
+.otp-card { background: white; padding: 50px; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.1); text-align: center; width: 400px; border: 1px solid #eee; }
+.otp-field { font-size: 30px; letter-spacing: 15px; text-align: center; border: none; border-bottom: 3px solid var(--secondary); width: 200px; outline: none; background: transparent; }
+
+/* Animations */
+.shake { animation: shake 0.3s; border-color: var(--error) !important; }
+@keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
