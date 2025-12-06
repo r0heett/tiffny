@@ -388,3 +388,21 @@ body { font-family: 'Poppins', sans-serif; margin: 0; padding: 0; color: #333; b
     .mf-btn { font-weight: 600; color: #333; cursor: pointer; }
     .mf-map { color: #ff5500; }
 }
+/* Continue as User Button (Partner Style) */
+.btn-user-cont {
+    margin-left: 15px;
+    padding: 8px 20px;
+    border: 1px solid #ff5500; /* केशरी बॉर्डर */
+    color: #ff5500;            /* केशरी अक्षरे */
+    background: transparent;   /* पारदर्शक */
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 14px;
+}
+
+.btn-user-cont:hover {
+    background: #ff5500; /* माऊस नेल्यावर केशरी होईल */
+    color: white;
+}

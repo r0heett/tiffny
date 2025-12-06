@@ -43,6 +43,7 @@ function Home() {
       {/* 1. Navbar */}
       <div className="navbar">
         <div className="logo" onClick={() => navigate('/')}>Tiffny</div>
+        
         <div className="nav-center">
             <span className="nav-link active-link" onClick={() => navigate('/')}>Home</span>
             <span className="nav-link" onClick={() => navigate('/menu')}>Mess</span>
@@ -50,11 +51,18 @@ function Home() {
             <span className="nav-link" onClick={() => navigate('/about')}>Concept</span>
             <span className="nav-link" onClick={() => navigate('/')}>Contact</span>
         </div>
+
         <div className="nav-right">
+            {/* मेस मालकांसाठी */}
             <button className="btn-partner" onClick={() => navigate('/partner-signup')}>Partner with Us</button>
+            
+            {/* --- हे नवीन ऑप्शन (ग्राहकांसाठी) --- */}
+            <button className="btn-user-cont" onClick={() => navigate('/menu')}>Continue as User</button>
+            
             <span className="link-signin" onClick={() => navigate('/login')}>Sign In</span>
         </div>
       </div>
+      
 
       {/* 2. Hero Section (Video) */}
       <div className="hero-section-tiffit">
