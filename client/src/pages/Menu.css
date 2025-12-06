@@ -1,0 +1,288 @@
+/* --- ULTRA PREMIUM MENU PAGE --- */
+
+/* 1. Header with Pattern */
+.menu-page-header {
+    background: linear-gradient(135deg, #fff 0%, #fff9f0 100%); /* हलका केशरी ग्रेडियंट */
+    padding: 50px 80px;
+    border-bottom: 1px solid #f0f0f0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* बॅकग्राउंडला हलके डिझाइन */
+.menu-page-header::before {
+    content: '';
+    position: absolute;
+    top: -50px; right: -50px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(255, 107, 53, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.menu-page-header h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #222;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
+    background: -webkit-linear-gradient(#333, #555);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* 2. Advanced Search Bar */
+.search-bar-tiffit {
+    display: flex;
+    background: white;
+    padding: 8px;
+    border-radius: 50px; /* पूर्ण गोल */
+    width: 100%;
+    max-width: 600px;
+    margin-top: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05); /* सॉफ्ट शॅडो */
+    border: 1px solid #eee;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.search-bar-tiffit:hover {
+    box-shadow: 0 15px 40px rgba(255, 107, 53, 0.15);
+    transform: translateY(-2px);
+    border-color: #ffcab0;
+}
+
+.search-bar-tiffit input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    background: transparent;
+}
+
+.search-bar-tiffit button {
+    background: linear-gradient(to right, #ff5500, #ff8c00);
+    color: white;
+    border: none;
+    padding: 12px 40px;
+    border-radius: 40px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(255, 85, 0, 0.3);
+    transition: transform 0.2s;
+}
+
+.search-bar-tiffit button:hover {
+    transform: scale(1.05);
+}
+
+/* 3. Sidebar (Clean & Sticky) */
+.filter-sidebar {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    border: none; /* बॉर्डर काढली */
+    box-shadow: 0 5px 25px rgba(0,0,0,0.03); /* खूप हलकी सावली */
+    height: fit-content;
+    position: sticky;
+    top: 100px;
+}
+
+.filter-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+    display: block;
+    position: relative;
+}
+
+/* टायटलच्या खाली छोटी लाईन */
+.filter-title::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: #ff5500;
+    margin-top: 8px;
+    border-radius: 2px;
+}
+
+/* Checkboxes Style */
+.checkbox-row {
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+    cursor: pointer;
+    font-size: 15px;
+    color: #555;
+    transition: color 0.2s;
+}
+.checkbox-row:hover { color: #ff5500; }
+.checkbox-row input {
+    accent-color: #ff5500;
+    width: 18px; height: 18px;
+    margin-right: 12px;
+    cursor: pointer;
+}
+
+/* 4. Premium Mess Cards (Glass & Lift Effect) */
+.premium-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 35px;
+}
+
+.premium-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid #f5f5f5;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* बाउंस इफेक्ट */
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.premium-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.08);
+    border-color: #fff0e6;
+}
+
+.p-card-img {
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.premium-card:hover .p-card-img {
+    transform: scale(1.05); /* फोटो झूम होईल */
+}
+
+.p-badge {
+    position: absolute; top: 20px; left: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    color: #333;
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: 700;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    backdrop-filter: blur(5px);
+}
+
+/* Heart Icon */
+.heart-icon {
+    position: absolute; top: 20px; right: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    font-size: 20px;
+    color: #ccc;
+    transition: all 0.3s;
+}
+.heart-icon:hover {
+    background: white;
+    color: #ff4757;
+    transform: scale(1.1);
+}
+
+.p-content { padding: 25px; flex: 1; }
+
+.p-title {
+    font-size: 22px;
+    font-weight: 800;
+    margin: 0;
+    color: #222;
+    letter-spacing: -0.5px;
+}
+
+.p-rating {
+    background: #24963f;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    float: right;
+    box-shadow: 0 4px 10px rgba(36, 150, 63, 0.2);
+}
+
+.p-info-item {
+    font-size: 12px;
+    color: #444;
+    background: #f4f6f8;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.p-actions {
+    padding: 20px 25px;
+    background: #fff;
+    border-top: 1px dashed #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.p-price {
+    font-size: 22px;
+    font-weight: 800;
+    color: #222;
+}
+
+.btn-view-plans {
+    background: white;
+    color: #ff5500;
+    border: 2px solid #ff5500;
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-view-plans:hover {
+    background: #ff5500;
+    color: white;
+    box-shadow: 0 5px 15px rgba(255, 85, 0, 0.3);
+}
+/* --- Final Menu Styles --- */
+.premium-card {
+    background: white; border-radius: 16px; overflow: hidden; border: 1px solid #eee;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03); transition: all 0.3s ease;
+    display: flex; flex-direction: column; position: relative;
+}
+.premium-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
+
+.p-card-img { height: 220px; width: 100%; object-fit: cover; transition: transform 0.5s; }
+.premium-card:hover .p-card-img { transform: scale(1.05); }
+
+.p-badge { position: absolute; top: 15px; left: 15px; background: white; color: #333; padding: 5px 12px; border-radius: 30px; font-size: 12px; font-weight: 700; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+.heart-icon { position: absolute; top: 15px; right: 15px; background: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.1); font-size: 18px; color: #ccc; transition: 0.2s; }
+.heart-icon:hover { color: #ff4757; transform: scale(1.1); }
+
+.p-content { padding: 20px; flex: 1; }
+.p-title { font-size: 20px; font-weight: 800; margin: 0; color: #222; }
+.p-rating { background: #24963f; color: white; padding: 2px 6px; border-radius: 4px; font-size: 12px; font-weight: 700; float: right; }
+.p-desc { color: #666; font-size: 13px; margin-top: 5px; margin-bottom: 15px; }
+
+.p-actions { padding: 15px 20px; border-top: 1px dashed #eee; display: flex; justify-content: space-between; align-items: center; background: #fff; }
+.p-price { font-size: 18px; font-weight: 800; color: #222; }
+.btn-view-plans { background: #ff5500; color: white; border: none; padding: 10px 20px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.3s; }
+.btn-view-plans:hover { background: #e04b00; box-shadow: 0 5px 15px rgba(255, 85, 0, 0.3); }
+
+.empty-state { text-align: center; padding: 60px; grid-column: span 2; background: white; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
