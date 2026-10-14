@@ -1,4 +1,4 @@
-# TIFFNY — Student Mess & Tiffin Management Platform
+# TIFFNY — Student Mess & Tiffin Platform
 
 TIFFNY is a web-based platform designed to connect students with mess owners and home-based food providers. It helps students discover mess services, explore meal options, place orders, and choose between eating at a mess and receiving tiffin delivery.
 
